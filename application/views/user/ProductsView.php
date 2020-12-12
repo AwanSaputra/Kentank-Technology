@@ -27,7 +27,7 @@
                         <span class="icon icon-envelope mr-3"></span>
                         <div class="text">
                             <strong class="d-block heading">Send us a message</strong>
-                            <span class="excerpt"><a href="#">hxhealth@gmail.com</a></span>
+                            <span class="excerpt"><a href="#">kentanktech@gmail.com</a></span>
                         </div>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                         <span class="icon icon-clock-o mr-3"></span>
                         <div class="text">
                             <strong class="d-block heading">Opening hours</strong>
-                            <span class="excerpt">Mon - Sat 8:00 AM - 5:00 PM</span>
+                            <span class="excerpt">Mon - Sat 8:00 AM - 9:00 PM</span>
                         </div>
                     </div>
                 </div>

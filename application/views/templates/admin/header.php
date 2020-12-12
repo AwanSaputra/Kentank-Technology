@@ -21,7 +21,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="<?php echo base_url() ?>">Kentank<span>Tech</span></a>
+            <a class="navbar-brand" href="<?php echo base_url('index.php/admin') ?>">Kentank<span>Tech</span></a>
             <form action="#" class="searchform order-sm-start order-lg-last">
                 <div class="form-group d-flex">
                     <input type="text" class="form-control pl-3" placeholder="Search">

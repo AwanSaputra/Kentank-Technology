@@ -44,7 +44,7 @@
 
             <div class="col-md-3 py-md-5 py-4 aside-stretch-right pl-lg-5">
                 <h2 class="footer-heading">Hi, <?php echo $this->session->userdata("name"); ?></h2>
-                <form method="POST" action="admin/logout" class="form-consultation">
+                <form method="POST" action="<?php echo base_url('index.php/admin/logout') ?>" class="form-consultation">
                     <div class="form-group">
                         <input type="text" name="username" class="form-control" placeholder="You have been logged in as Admin" disabled>
                     </div>

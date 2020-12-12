@@ -15,7 +15,7 @@ class Admin extends CI_Controller
     function logout()
     {
         $this->session->sess_destroy();
-        redirect(base_url('index.php/home'));
+        redirect(base_url('index.php/Home'));
     }
 
     public function index()
@@ -40,12 +40,14 @@ class Admin extends CI_Controller
         $this->load->view('admin/AdmProductsView', $data);
         $this->load->view('templates/admin/footer');
     }
-    public function addN()
+    public function addP()
     {
-        $this->load->view('admin/addn', array('error' => ' '));
+        $this->load->view('templates/admin/header');
+        $this->load->view('admin/addProducts', array('error' => ' '));
+        $this->load->view('templates/admin/footer');
     }
 
-    public function addProudcts()
+    public function addProducts()
     {
         $data = [
             "title" => $this->input->post('title', true),
@@ -56,14 +58,31 @@ class Admin extends CI_Controller
         $this->uploadImage();
         $file_info = $this->upload->data();
         $data['picture'] = $file_info['file_name'];
-        $this->rolemodel->addProudcts($data);
+        $this->rolemodel->addProducts($data);
         $this->session->set_flashdata('alert', 'News has been added!');
         redirect('admin/products', 'refresh');
     }
 
+    public function editProducts($id)
+    {
+        $data['judul'] = 'Form Ubah Data Mahasiswa';
+        $data['products'] = $this->rolemodel->getProductsById($id);
+        $this->form_validation->set_rules('title', 'Title', 'required');
+        $this->form_validation->set_rules('description', 'Description', 'required');
+        if ($this->form_validation->run() == FALSE) {
+            $this->load->view('templates/admin/header');
+            $this->load->view('admin/editProducts', $data);
+            $this->load->view('templates/admin/footer');
+        } else {
+            $this->rolemodel->ubahDataProducts();
+            $this->session->set_flashdata('flash', 'data changed successfully');
+            redirect('admin/products');
+        }
+    }
+
     public function manageProducts()
     {
-        $data['products'] = $this->rolemodel->getNews();
+        $data['products'] = $this->rolemodel->getProducts();
         $this->load->view('templates/admin/header');
         $this->load->view('admin/manageProducts', $data);
         $this->load->view('templates/admin/footer');
@@ -147,23 +166,8 @@ class Admin extends CI_Controller
     {
         $data['messages'] = $this->rolemodel->getMessages();
         $this->load->view('templates/admin/header');
-        $this->load->view('admin/messagesView', $data);
+        $this->load->view('admin/messageView', $data);
         $this->load->view('templates/admin/footer');
-    }
-
-    public function addContacts()
-    {
-        $data = [
-            "fname" => $this->input->post('fname', true),
-            "lname" => $this->input->post('lname', true),
-            "email" => $this->input->post('email', true),
-            "subject" => $this->input->post('subject', true),
-            "message" => $this->input->post('message', true),
-        ];
-
-        $this->rolemodel->addContacts($data);
-        $this->session->set_flashdata('flash', 'Message has been sent!');
-        redirect('home/contacts', 'refresh');
     }
 
     public function removeMessages($id)
@@ -173,14 +177,11 @@ class Admin extends CI_Controller
     }
 
 
-
-
-
-
+    // fungsi untuk upload image
     public function uploadImage()
     {
         $config['upload_path']         = './assets/images/';
-        $config['allowed_types']    = 'gif|jpg|png';
+        $config['allowed_types']    = 'gif|jpg|png|jpeg';
         $config['max_size']         = 5024;
 
         $this->load->library('upload', $config);

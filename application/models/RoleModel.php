@@ -40,6 +40,21 @@ class rolemodel extends CI_Model
         return $this->db->delete('products');
     }
 
+    public function getProductsById($id)
+    {
+        return $this->db->get_where('products', ['id' => $id])->row_array();
+    }
+
+    public function ubahDataProducts()
+    {
+        $data = [
+            "title" => $this->input->post('title', true),
+            "description" => $this->input->post('description', true),
+        ];
+        $this->db->where('id', $this->input->post('id'));
+        $this->db->update('products', $data);
+    }
+
     //supplier
     public function addSupplier($data)
     {

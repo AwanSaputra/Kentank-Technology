@@ -27,7 +27,7 @@
                         <span class="icon icon-envelope mr-3"></span>
                         <div class="text">
                             <strong class="d-block heading">Send us a message</strong>
-                            <span class="excerpt"><a href="#">hxhealth@gmail.com</a></span>
+                            <span class="excerpt"><a href="#">kentanktech@gmail.com</a></span>
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
 <div class="row justify-content-center mb-4">
     <div class="col-md-10 text-center">
         <h1 data-aos="fade-up" class="mb-3"> Products & Brands </h1>
-        <p data-aos="fade-up" data-aos-delay="100"><a href="<?php echo base_url('index.php/admin/managenews') ?>" class="btn btn-primary btn-pill">Manage</a></p>
+        <p data-aos="fade-up" data-aos-delay="100"><a href="<?php echo base_url('index.php/admin/manageProducts') ?>" class="btn btn-primary btn-pill">Manage</a></p>
     </div>
 </div>
 
